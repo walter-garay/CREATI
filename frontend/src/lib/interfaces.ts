@@ -7,6 +7,7 @@ export interface Product {
     stock: number;
     price: number;
     cost: number;
+    photos: string[];
   }
   
   // models/Order.ts

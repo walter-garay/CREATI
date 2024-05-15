@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { CartContextProvider } from "@/contexts/cart";
+import Navbar from "@/components/navbar/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Creati: Tu aliado en el reciclaje",
+  title: "CREATI - Tu aliado en el reciclaje",
   description: "Kits armables hechos de reciclaje, tutoriales divertidos y compra de material reciclado.",
 };
 
@@ -15,8 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <CartContextProvider>
+      <html lang="es">
+        <body className={inter.className}>
+          <Navbar/>
+          {children}
+        </body>
+      </html>
+    </CartContextProvider>
   );
 }
